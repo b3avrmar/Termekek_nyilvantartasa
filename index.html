@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+    <title>Termékek nyilvántartása</title>
+  </head>
+  <body>
+    <h1>Termékek nyilvántartása</h1>
+
+    <div>
+      <label for="productName">Termék neve:</label>
+      <input type="text" id="productName" />
+      <label for="productManufacturer">Gyártó:</label>
+      <input type="text" id="productManufacturer" />
+      <label for="productCategory">Kategória:</label>
+      <input type="text" id="productCategory" />
+      <label for="productPrice">Ár:</label>
+      <input type="number" id="productPrice" />
+      <label for="productStock">Készlet:</label>
+      <input type="number" id="productStock" />
+      <button onclick="addProduct()">Hozzáadás</button>
+    </div>
+
+    <table border>
+      <thead>
+        <tr>
+          <th>Termék neve</th>
+          <th>Gyártó</th>
+          <th>Kategória</th>
+          <th>Ár</th>
+          <th>Készlet</th>
+          <th>Műveletek</th>
+        </tr>
+      </thead>
+      <tbody id="productTableBody"></tbody>
+    </table>
+  </body>
+</html>
