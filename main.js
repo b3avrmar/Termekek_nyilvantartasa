@@ -114,3 +114,15 @@ function deleteProduct(productId) {
   }
   displayProducts();
 }
+
+function isValidProduct(name, manufacturer, category, price, stock) {
+  return (
+    name &&
+    manufacturer &&
+    category &&
+    Number.isFinite(price) &&
+    price >= 0 &&
+    Number.isInteger(stock) &&
+    stock >= 0
+  );
+}
