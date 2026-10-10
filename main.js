@@ -64,3 +64,8 @@ function addProduct() {
 
   displayProducts();
 }
+
+function deleteProduct(productId) {
+  productList = productList.filter((product) => product.id !== productId);
+  displayProducts();
+}
