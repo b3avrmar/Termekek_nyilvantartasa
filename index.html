@@ -10,26 +10,43 @@
   <body>
     <h1>Termékek nyilvántartása</h1>
 
-    <div>
-      <label for="productName">Termék neve:</label>
-      <input type="text" id="productName" />
-      <label for="productManufacturer">Gyártó:</label>
-      <input type="text" id="productManufacturer" />
-      <label for="productCategory">Kategória:</label>
-      <input type="text" id="productCategory" />
-      <label for="productPrice">Ár:</label>
-      <input type="number" id="productPrice" />
-      <label for="productStock">Készlet:</label>
-      <input type="number" id="productStock" />
-      <button id="addProductButton" onclick="addProduct()">Hozzáadás</button>
-      <button
-        id="cancelModificationButton"
-        type="button"
-        onclick="cancelModification()"
-        hidden
-      >
-        Mégse
-      </button>
+    <div class="product-form">
+      <div class="field">
+        <label for="productName">Termék neve:</label>
+        <input type="text" id="productName" />
+      </div>
+
+      <div class="field">
+        <label for="productManufacturer">Gyártó:</label>
+        <input type="text" id="productManufacturer" />
+      </div>
+
+      <div class="field">
+        <label for="productCategory">Kategória:</label>
+        <input type="text" id="productCategory" />
+      </div>
+
+      <div class="field compact">
+        <label for="productPrice">Ár:</label>
+        <input type="number" id="productPrice" />
+      </div>
+
+      <div class="field compact">
+        <label for="productStock">Készlet:</label>
+        <input type="number" id="productStock" />
+      </div>
+
+      <div class="form-actions">
+        <button id="addProductButton" onclick="addProduct()">Hozzáadás</button>
+        <button
+          id="cancelModificationButton"
+          type="button"
+          onclick="cancelModification()"
+          hidden
+        >
+          Mégse
+        </button>
+      </div>
     </div>
 
     <table border>

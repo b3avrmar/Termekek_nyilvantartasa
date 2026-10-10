@@ -1,11 +1,143 @@
+:root {
+  --bg: #f4f7fb;
+  --surface: #fff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #cbd5e1;
+  --primary: #2563eb;
+  --danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
+  padding: 40px 20px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+h1 {
   text-align: center;
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
+  margin-bottom: 24px;
+}
+
+.product-form,
+table {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.product-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+}
+
+.field input:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.form-actions {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+}
+
+#addProductButton {
+  background: var(--primary);
+  color: white;
+}
+
+#cancelModificationButton {
+  background: #e2e8f0;
 }
 
 table {
-  margin: auto;
-  width: 80%;
+  margin-top: 24px;
   border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background: #e2e8f0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+#productTableBody button:first-child {
+  background: #dbeafe;
+  color: var(--primary);
+}
+
+#productTableBody button:last-child {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+#productTableBody button + button {
+  margin-left: 8px;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 20px 12px;
+  }
+  .product-form {
+    grid-template-columns: 1fr;
+  }
+  table {
+    display: block;
+    overflow-x: auto;
+  }
 }
