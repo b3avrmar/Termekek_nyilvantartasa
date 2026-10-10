@@ -1,5 +1,6 @@
 let productList = [];
 let nextProductId = 1;
+let editingProductId = null;
 
 function displayProducts() {
   const productTable = document.getElementById("productTableBody");
@@ -21,6 +22,12 @@ function displayProducts() {
     }
 
     const actionsCell = document.createElement("td");
+    const modifyButton = document.createElement("button");
+    modifyButton.type = "button";
+    modifyButton.textContent = "Módosítás";
+    modifyButton.addEventListener("click", () => modifyProduct(product.id));
+    actionsCell.appendChild(modifyButton);
+
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
     deleteButton.textContent = "Törlés";
@@ -40,32 +47,59 @@ function addProduct() {
   const price = Number(document.getElementById("productPrice").value);
   const stock = Number(document.getElementById("productStock").value);
 
-  if (
-    !name ||
-    !manufacturer ||
-    !category ||
-    !Number.isFinite(price) ||
-    price < 0 ||
-    !Number.isInteger(stock) ||
-    stock < 0
-  ) {
+  if (!isValidProduct(name, manufacturer, category, price, stock)) {
     return;
   }
 
-  const product = {
-    id: nextProductId++,
-    name,
-    manufacturer,
-    category,
-    price,
-    stock,
-  };
-  productList.push(product);
+  if (editingProductId === null) {
+    productList.push({
+      id: nextProductId++,
+      name,
+      manufacturer,
+      category,
+      price,
+      stock,
+    });
+  } else {
+    const product = productList.find(
+      (currentProduct) => currentProduct.id === editingProductId,
+    );
+    if (!product) {
+      cancelModification();
+      return;
+    }
+
+    Object.assign(product, { name, manufacturer, category, price, stock });
+    cancelModification();
+  }
 
   displayProducts();
 }
 
+function modifyProduct(productId) {
+  const product = productList.find(
+    (currentProduct) => currentProduct.id === productId,
+  );
+  if (!product) {
+    return;
+  }
+
+  document.getElementById("productName").value = product.name;
+  document.getElementById("productManufacturer").value = product.manufacturer;
+  document.getElementById("productCategory").value = product.category;
+  document.getElementById("productPrice").value = product.price;
+  document.getElementById("productStock").value = product.stock;
+  editingProductId = productId;
+
+  const addButton = document.getElementById("addProductButton");
+  addButton.textContent = "Mentés";
+  document.getElementById("cancelModificationButton").hidden = false;
+}
+
 function deleteProduct(productId) {
   productList = productList.filter((product) => product.id !== productId);
+  if (editingProductId === productId) {
+    cancelModification();
+  }
   displayProducts();
 }

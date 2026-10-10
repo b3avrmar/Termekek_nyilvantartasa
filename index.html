@@ -21,7 +21,15 @@
       <input type="number" id="productPrice" />
       <label for="productStock">Készlet:</label>
       <input type="number" id="productStock" />
-      <button onclick="addProduct()">Hozzáadás</button>
+      <button id="addProductButton" onclick="addProduct()">Hozzáadás</button>
+      <button
+        id="cancelModificationButton"
+        type="button"
+        onclick="cancelModification()"
+        hidden
+      >
+        Mégse
+      </button>
     </div>
 
     <table border>
