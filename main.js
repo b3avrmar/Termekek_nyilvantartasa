@@ -96,6 +96,17 @@ function modifyProduct(productId) {
   document.getElementById("cancelModificationButton").hidden = false;
 }
 
+function cancelModification() {
+  editingProductId = null;
+  document.getElementById("productName").value = "";
+  document.getElementById("productManufacturer").value = "";
+  document.getElementById("productCategory").value = "";
+  document.getElementById("productPrice").value = "";
+  document.getElementById("productStock").value = "";
+  document.getElementById("addProductButton").textContent = "Hozzáadás";
+  document.getElementById("cancelModificationButton").hidden = true;
+}
+
 function deleteProduct(productId) {
   productList = productList.filter((product) => product.id !== productId);
   if (editingProductId === productId) {
