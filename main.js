@@ -70,10 +70,10 @@ function addProduct() {
     }
 
     Object.assign(product, { name, manufacturer, category, price, stock });
-    cancelModification();
   }
 
   displayProducts();
+  cancelModification();
 }
 
 function modifyProduct(productId) {
